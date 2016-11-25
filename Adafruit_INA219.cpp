@@ -366,7 +366,13 @@ void Adafruit_INA219::begin(uint8_t addr) {
 }
 
 void Adafruit_INA219::begin(void) {
-  Wire.begin(D3,D2);    
+  Wire.begin();    
+  // Set chip to large range config values to start
+  setCalibration_32V_2A();
+}
+
+void Adafruit_INA219::begin(int mySDA, int mySCL) {
+  Wire.begin(mySDA, mySCL);    
   // Set chip to large range config values to start
   setCalibration_32V_2A();
 }
